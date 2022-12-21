@@ -1,0 +1,16 @@
+.profile-picture--container {
+  position: relative;
+}
+
+.img--profile {
+  border-radius: 50%;
+  width: 200px;
+}
+
+.img--badge {
+  border-radius: 50%;
+  width: 60px;
+  position: absolute;
+  bottom: 10px;
+  left: 140px;
+}

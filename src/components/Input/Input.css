@@ -1,0 +1,46 @@
+.error-message {
+  color: #e44a4c;
+  font-size: 0.75rem;
+  visibility: hidden;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  grid-column: 2/3;
+}
+
+.input-field {
+  background-color: var(--secondary-lightblue);
+  border-width: 1px;
+  border-color: var(--secondary-blue);
+  border-style: solid;
+  border-image: none;
+  border-radius: 3px;
+  padding: 0.3rem;
+  font-family: "Noto Sans", sans-serif;
+  margin: 0.5rem;
+}
+
+.input-field:focus-visible {
+  outline: var(--secondary-blue);
+}
+
+.input-field::placeholder {
+  color: var(--secondary-blue);
+  font-size: 0.95em;
+}
+
+.input-field:invalid[focused="true"] ~ span {
+  visibility: visible;
+}
+
+/* Makes the color of the border change, whenever the input vaulue is incorrect */
+.input-field:invalid[focused="true"] {
+  border: 1px solid #e44a4c;
+}
+
+.input-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 15fr;
+  justify-content: end;
+  align-items: center;
+}

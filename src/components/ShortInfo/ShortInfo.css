@@ -1,0 +1,36 @@
+.short-info-container {
+  display: grid;
+  grid-template-columns: auto 120px 1fr;
+  width: auto;
+  align-items: center;
+  margin: 1rem;
+  background: var(--secondary-lightblue);
+  border-radius: 3px;
+  padding: 0.5rem;
+  gap: 15px;
+  justify-items: start;
+}
+
+.short-info {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0px;
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: start;
+  color: var(--primary-blue);
+}
+
+.short-info-inner-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#learning-languages {
+  margin-bottom: 0px;
+  text-align: start;
+  font-size: 0.85rem;
+  color: var(--primary-blue);
+}
