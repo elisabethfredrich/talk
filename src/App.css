@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&display=swap");
+
+:root {
+  /* primary colours*/
+  --primary-blue: #000b39;
+  --primary-red: #e44a4c;
+
+  /* secondary colours */
+  --secondary-red: #9b1719;
+  --secondary-darkblue: #2e3656;
+  --secondary-blue: #475485;
+  --secondary-lightblue: #f5f7ff;
+}
+
+/* fonts */
+h1 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.h1-sub {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.h2-sub {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+h3 {
+  color: var(--secondary-lightblue);
+  font-weight: 300;
+  margin-bottom: 0.4rem;
+  font-size: 1.3rem;
+}
+
+p {
+  font-weight: 400;
+  font-size: 1rem;
+  max-width: 500px;
+  margin-block-start: 0%; /*this assures no margin on the top of the paragraph text*/
+  margin-block-end: 0%;
+  line-height: 1.6;
+}
+
+.link-text:hover {
+  color: var(--secondary-red);
+}
+
+/* general layout */
+body {
+  background-color: var(--secondary-lightblue);
+  font-family: "Noto Sans", sans-serif;
+  color: var(--primary-blue);
+  margin: 0;
+}
+
+#app-main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 10vh 1fr 7vh;
+}
+
+.App {
+  height: 100vh;
+}
+
+.page-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  cursor: pointer;
+}
+
+.blue-text {
+  color: var(--primary-blue);
+}
+
+/* icons styling */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+  z-index: 1;
+  margin-right: 0.8rem;
+  margin-left: 0.8rem;
+  font-size: 2rem;
+  color: var(--primary-red);
+}
+
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.filled-icon {
+  font-variation-settings: "FILL" 1;
+}
+
+.large-icon {
+  font-size: 6rem;
+  margin: 0;
+}
+
+.bigger-icon {
+  font-size: 2.3rem;
+  margin-top: 0.5rem;
+}
+
+.big-icon {
+  font-size: 2.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.icon-link:hover {
+  color: var(--secondary-red);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.lightblue {
+  color: var(--secondary-lightblue);
+}
+
+.lightblue:hover {
+  color: var(--primary-red);
+}
+
+.icon-no-margin {
+  margin-right: 0px;
+  font-size: 2rem;
+}
+
+.flex-container-horizontal {
+  display: flex;
+  justify-content: center;
+}
