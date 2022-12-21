@@ -59,8 +59,6 @@ const ChatPage = () => {
   const scrollToMostRecentMessage = async function () {
     await getCurrentUsersChats(currentUser, setUserChats, undefined);
     const msgId = await getIdOfMostRecentMessageInChat(selectedChat);
-    console.log(selectedChat);
-    console.log(msgId);
     document.getElementById(msgId.id).scrollIntoView();
   };
 
