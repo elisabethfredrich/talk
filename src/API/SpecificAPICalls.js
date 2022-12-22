@@ -1,5 +1,5 @@
 import Parse from "parse";
-import { timeString, getObjectFromDBWithFind } from "./GeneralAPICalls";
+import { timeString } from "./GeneralAPICalls";
 import {
   getPointerObjectFromId,
   getObjectFromDBWithFirst,
@@ -18,7 +18,7 @@ export async function registerGroup(
 ) {
   let group = new Parse.Object("Chat");
 
-  const parseFile = new Parse.File("Group-picture" + ".jpg", picture);
+  const parseFile = new Parse.File("Group-picture.jpg", picture);
   await parseFile.save().then(
     function () {},
     function (error) {}
@@ -147,14 +147,14 @@ export async function addTandemChatToBothUsersChatRelation(
   tandemChat
 ) {
   let currentUserObject = await getUserObject(userId);
-  let profileObject = await getUserObject(chosenProfileId);
+  await getUserObject(chosenProfileId);
   addChatToLoggedInUserChatRelation(currentUserObject, tandemChat);
   addChatToUserChatRelation(chosenProfileId, tandemChat.id);
 }
 
 export async function addChatToUserChatRelation(userObjectId, chatObjectId) {
   const params = { user: userObjectId, chat: chatObjectId };
-  const result = await Parse.Cloud.run("editUsersChats", params);
+  await Parse.Cloud.run("editUsersChats", params);
 }
 
 export async function addChatToLoggedInUserChatRelation(
@@ -309,7 +309,7 @@ export const getProfileRecommendations = async function (
         userObjects.map((user) => userArray.push(user));
 
         if (
-          userArray.length == 2 &&
+          userArray.length === 2 &&
           userArray.map((user) => user.id).includes(currentUser.id)
         ) {
           connected = true;
@@ -479,7 +479,7 @@ export async function getCurrentUsersChats(currentUser, setUserChats, limit) {
       }
     }
 
-    if (limit == 1) {
+    if (limit === 1) {
       setUserChats(chatArray[0]);
       return chatArray[0];
     } else {

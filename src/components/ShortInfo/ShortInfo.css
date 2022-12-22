@@ -8,7 +8,6 @@
   border-radius: 3px;
   padding: 0.5rem;
   gap: 15px;
-  justify-items: start;
 }
 
 .short-info {
@@ -19,7 +18,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-align: start;
   color: var(--primary-blue);
 }
 
@@ -30,7 +28,6 @@
 
 #learning-languages {
   margin-bottom: 0px;
-  text-align: start;
   font-size: 0.85rem;
   color: var(--primary-blue);
 }

@@ -28,7 +28,7 @@ const ChatPage = () => {
   const [messageInput, setMessageInput] = useState("");
   const [submittedMessage, setSubmittedMessage] = useState("");
 
-  const { isLive, isLoading, isSyncing, results, count, error, reload } =
+  const { results} =
     useParseQuery(getQueryForMessagesInSelectedChat(selectedChat), {
       enableLocalDatastore: true,
       enableLiveQuery: true,

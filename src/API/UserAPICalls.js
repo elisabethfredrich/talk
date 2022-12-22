@@ -8,7 +8,7 @@ export async function doUserLogIn(
   setErrorMessage
 ) {
   try {
-    const loggedInUser = await Parse.User.logIn(emailValue, passwordValue);
+    await Parse.User.logIn(emailValue, passwordValue);
     user.setLoggedIn(true);
     return true;
   } catch (error) {
@@ -46,9 +46,8 @@ export async function registerUser(
   picture
 ) {
   const name = firstname + " " + lastname;
-  const username = firstname + lastname + Math.random;
   let user = new Parse.User();
-  const parseFile = new Parse.File("User-picture" + ".jpg", picture);
+  const parseFile = new Parse.File("User-picture.jpg", picture);
   await parseFile.save().then(
     function () {},
     function (error) {}
@@ -77,7 +76,6 @@ export async function registerUser(
 export async function duplicateEmail(email) {
   const query = new Parse.Query("User");
   query.equalTo("email", email);
-  let isDuplicate;
   try {
     return await query.find();
   } catch (error) {

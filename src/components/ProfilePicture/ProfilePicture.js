@@ -10,13 +10,11 @@ const ProfilePicture = (props) => {
   const [isHorizontal, setIsHorizontal] = useState(false);
   const [isVertical, setIsVertical] = useState(false);
 
-  useEffect(() => {
-    isPictureHorizontal();
-  }, [isHorizontal]);
 
   useEffect(() => {
     isPictureVertical();
-  }, [isVertical]);
+    isPictureHorizontal();
+  }, [isVertical, isHorizontal]);
 
   const isPictureHorizontal = () => {
     if (document.querySelector("#" + props.id) !== null) {

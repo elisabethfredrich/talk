@@ -29,20 +29,6 @@ export async function getObjectFromDBWithFirst(id, databaseObjectName) {
   }
 }
 
-export async function getObjectFromDBWithFind(id, databaseObjectName) {
-  const query = new Parse.Query(databaseObjectName);
-  query.equalTo("objectId", id);
-  try {
-    const objectArray = await query.find();
-    const object = objectArray[0];
-    return object;
-  } catch (error) {
-    console.log(
-      `Could not get ${databaseObjectName} object with id ${id}: ${error}`
-    );
-  }
-}
-
 //############## PARSE CALL FOR LIVE QUERY ##############
 
 export const getQueryForMessagesInSelectedChat = (selectedChatId) => {

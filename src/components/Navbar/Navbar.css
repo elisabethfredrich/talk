@@ -44,7 +44,6 @@
 #drop-down {
   margin-right: 0;
   color: var(--primary-red);
-  align-items: start;
   padding-left: 1.5rem;
   padding-right: 2rem;
   visibility: hidden;
