@@ -28,17 +28,19 @@ const ChatPage = () => {
   const [messageInput, setMessageInput] = useState("");
   const [submittedMessage, setSubmittedMessage] = useState("");
 
-  const { results} =
-    useParseQuery(getQueryForMessagesInSelectedChat(selectedChat), {
+  const { results } = useParseQuery(
+    getQueryForMessagesInSelectedChat(selectedChat),
+    {
       enableLocalDatastore: true,
       enableLiveQuery: true,
-    });
+    }
+  );
 
   useEffect(() => {
     const scrollToMessage = async () => {
-      await getCurrentUsersChats(currentUser, setUserChats, undefined);
-    const msgId = await getIdOfMostRecentMessageInChat(selectedChat);
-    document.getElementById(msgId.id).scrollIntoView();
+      setUserChats(await getCurrentUsersChats(currentUser, undefined));
+      const msgId = await getIdOfMostRecentMessageInChat(selectedChat);
+      document.getElementById(msgId.id).scrollIntoView();
     };
     scrollToMessage().catch(console.error);
   }, [selectedChat, submittedMessage, currentUser]);
@@ -57,7 +59,6 @@ const ChatPage = () => {
     );
     setSubmittedMessage(messageInput);
   };
-
 
   const onChange = (e) => {
     setMessageInput(e.target.value);

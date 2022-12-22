@@ -8,39 +8,22 @@ import {
 
 const ProfilePicture = (props) => {
   const [isHorizontal, setIsHorizontal] = useState(false);
-  const [isVertical, setIsVertical] = useState(false);
-
 
   useEffect(() => {
-    isPictureVertical();
+    const isPictureHorizontal = () => {
+      if (document.querySelector("#" + props.id) !== null) {
+        let profileImg = document.querySelector("#" + props.id);
+        let picWidth = profileImg.naturalWidth;
+        let picHeight = profileImg.naturalHeight;
+        let horizontal = false;
+        if (picHeight < picWidth) {
+          horizontal = true;
+        }
+        setIsHorizontal(horizontal);
+      }
+    };
     isPictureHorizontal();
-  }, [isVertical, isHorizontal]);
-
-  const isPictureHorizontal = () => {
-    if (document.querySelector("#" + props.id) !== null) {
-      let profileImg = document.querySelector("#" + props.id);
-      let picWidth = profileImg.naturalWidth;
-      let picHeight = profileImg.naturalHeight;
-      let horizontal = false;
-      if (picHeight < picWidth) {
-        horizontal = true;
-      }
-      setIsHorizontal(horizontal);
-    }
-  };
-
-  const isPictureVertical = () => {
-    if (document.querySelector("#" + props.id) !== null) {
-      let profileImg = document.querySelector("#" + props.id);
-      let picWidth = profileImg.naturalWidth;
-      let picHeight = profileImg.naturalHeight;
-      let vertical = false;
-      if (picHeight > picWidth) {
-        vertical = true;
-      }
-      setIsVertical(vertical);
-    }
-  };
+  }, [props.id]);
 
   return (
     <Container>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./Navbar.css";
 import logo from "../../images/logo.png";
 import Button from "../StyledComponents/Button";
@@ -14,8 +14,6 @@ function Navbar() {
   const navigate = useNavigate();
   const pathname = window.location.pathname;
   const user = useContext(UserStatusContext);
-  const [usersMostRecentChat, setUsersMostRecentChat] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
   let currentUser = getCurrentUser();
 
   const hideDropdown = () => {
@@ -42,28 +40,24 @@ function Navbar() {
       await Parse.User.logOut();
       user.setLoggedIn(false);
     } catch (error) {
-      setErrorMessage("Something went wrong. Please try to log out again.");
+      alert("Something went wrong. Please try to log out again.");
     }
   };
 
   async function navigateToChatPage() {
-    const mostRecentChat = await getCurrentUsersChats(
-      currentUser,
-      setUsersMostRecentChat,
-      1
-    );
+    const mostRecentChat = await getCurrentUsersChats(currentUser, 1);
     navigate(`/chats/${mostRecentChat.id}`);
   }
 
   return (
     <nav className="navbar">
       <button className="icon-btn" onClick={() => navigate("/home")}>
-        <img src={logo} className="logo" alt="logo"/>
+        <img src={logo} className="logo" alt="logo" />
       </button>
       {user.loggedIn ? (
         <div className="nav-items">
           <div className="icon-container">
-            <button className="icon-btn" onClick={() => navigateToChatPage()}>
+            <button onClick={() => navigateToChatPage()} className="icon-btn">
               <span
                 className={
                   pathname.includes(`/chats/`)
@@ -87,7 +81,11 @@ function Navbar() {
             </button>
           </div>
           <div className="nav-profile-picture">
-            <button className="icon-btn" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+            <button
+              className="icon-btn"
+              onMouseEnter={showDropdown}
+              onMouseLeave={hideDropdown}
+            >
               <ProfilePicture
                 id="profile-pic"
                 small

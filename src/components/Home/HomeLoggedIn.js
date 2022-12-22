@@ -29,7 +29,7 @@ const HomeLoggedIn = () => {
 
   useEffect(() => {
     const getCurrentUserChats = async () => {
-      await getCurrentUsersChats(currentUser, setUserChats, 4);
+      setUserChats(await getCurrentUsersChats(currentUser, 4));
     };
 
     const getGroupRecommendation = async () => {
@@ -66,7 +66,7 @@ const HomeLoggedIn = () => {
       <div className="grid-container">
         <div className="grid-horizontal">
           <div className="img-home">
-            <img src={Picture} alt="language learning"/>
+            <img src={Picture} alt="language learning" />
           </div>
 
           <Container blue>

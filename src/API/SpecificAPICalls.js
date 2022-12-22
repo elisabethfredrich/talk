@@ -222,15 +222,16 @@ export const getAllProfiles = async function () {
     const profileArray = [];
 
     for (const profile of profiles) {
-      if(profile.id !== getCurrentUser().id){
-      profileArray.push({
-        id: profile.id,
-        name: profile.attributes.Name,
-        img: profile.attributes.ProfilePicture,
-        badge: profile.attributes.NativeLanguage,
-        flag: profile.attributes.LearningLanguage,
-      });
-    }}
+      if (profile.id !== getCurrentUser().id) {
+        profileArray.push({
+          id: profile.id,
+          name: profile.attributes.Name,
+          img: profile.attributes.ProfilePicture,
+          badge: profile.attributes.NativeLanguage,
+          flag: profile.attributes.LearningLanguage,
+        });
+      }
+    }
     return profileArray;
   } catch (error) {
     console.log(`Could not get user profiles: ${error.message}`);
@@ -414,7 +415,7 @@ export const getIdOfMostRecentMessageInChat = async function (chatId) {
   }
 };
 
-export async function getCurrentUsersChats(currentUser, setUserChats, limit) {
+export async function getCurrentUsersChats(currentUser, limit) {
   //1. gets user
   const query = new Parse.Query("User");
   query.equalTo("objectId", currentUser.id);
@@ -481,10 +482,9 @@ export async function getCurrentUsersChats(currentUser, setUserChats, limit) {
     }
 
     if (limit === 1) {
-      setUserChats(chatArray[0]);
       return chatArray[0];
     } else {
-      setUserChats(chatArray);
+      return chatArray;
     }
   } catch (error) {
     console.log(
