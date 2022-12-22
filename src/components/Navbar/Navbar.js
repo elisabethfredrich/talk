@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import logo from "../../images/logo.png";
 import Button from "../StyledComponents/Button";
@@ -57,13 +57,13 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <a onClick={() => navigate("/home")}>
-        <img src={logo} className="logo" />
-      </a>
+      <button className="icon-btn" onClick={() => navigate("/home")}>
+        <img src={logo} className="logo" alt="logo"/>
+      </button>
       {user.loggedIn ? (
         <div className="nav-items">
           <div className="icon-container">
-            <a onClick={() => navigateToChatPage()} className="link">
+            <button className="icon-btn" onClick={() => navigateToChatPage()}>
               <span
                 className={
                   pathname.includes(`/chats/`)
@@ -73,8 +73,8 @@ function Navbar() {
               >
                 chat
               </span>
-            </a>
-            <a onClick={() => navigate("/search")} className="link">
+            </button>
+            <button onClick={() => navigate("/search")} className="icon-btn">
               <span
                 className={
                   pathname === "/search"
@@ -84,16 +84,16 @@ function Navbar() {
               >
                 search
               </span>
-            </a>
+            </button>
           </div>
           <div className="nav-profile-picture">
-            <a onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+            <button className="icon-button" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
               <ProfilePicture
                 id="profile-pic"
                 small
                 img={getCurrentUser().attributes.ProfilePicture.url()}
               ></ProfilePicture>
-            </a>
+            </button>
 
             <Container
               blue
@@ -101,14 +101,14 @@ function Navbar() {
               onMouseEnter={showDropdown}
               onMouseLeave={hideDropdown}
             >
-              <a onClick={doUserLogOut}>
+              <button className="icon-btn" onClick={doUserLogOut}>
                 <div className="drop-down-inner-container">
                   <span className="material-symbols-outlined icon-link lightblue">
                     Logout
                   </span>
                   <p className="link-text lightblue">Log out</p>
                 </div>
-              </a>
+              </button>
             </Container>
           </div>
         </div>

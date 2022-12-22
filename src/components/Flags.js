@@ -18,6 +18,9 @@ export const getBadgeLang = (propsbadge) => {
       break;
     case "uk":
       badge = England;
+      break;
+      default:
+        badge = "";
   }
   return badge;
 };

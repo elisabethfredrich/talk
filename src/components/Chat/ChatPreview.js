@@ -9,7 +9,7 @@ const ChatPreview = (props) => {
   const badge = getBadgeLang(props.badge);
 
   return (
-    <a onClick={props.onClick}>
+    <button className="icon-btn" onClick={props.onClick}>
       <ChatPreviewContainer active={props.active}>
         <ProfilePicture small img={props.img} badge={badge} padding="1rem" />
         <div className="container">
@@ -21,7 +21,7 @@ const ChatPreview = (props) => {
         </div>
       </ChatPreviewContainer>
       <HorizontalLine blue />
-    </a>
+    </button>
   );
 };
 

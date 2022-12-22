@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const HeaderContainer = styled.div`
   background: var(--primary-red);

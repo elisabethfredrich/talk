@@ -36,10 +36,12 @@ const ChatPage = () => {
 
   useEffect(() => {
     const scrollToMessage = async () => {
-      await scrollToMostRecentMessage();
+      await getCurrentUsersChats(currentUser, setUserChats, undefined);
+    const msgId = await getIdOfMostRecentMessageInChat(selectedChat);
+    document.getElementById(msgId.id).scrollIntoView();
     };
     scrollToMessage().catch(console.error);
-  }, [selectedChat, submittedMessage]);
+  }, [selectedChat, submittedMessage, currentUser]);
 
   const selectChat = (chatId) => {
     navigate(`/chats/${chatId}`);
@@ -56,11 +58,6 @@ const ChatPage = () => {
     setSubmittedMessage(messageInput);
   };
 
-  const scrollToMostRecentMessage = async function () {
-    await getCurrentUsersChats(currentUser, setUserChats, undefined);
-    const msgId = await getIdOfMostRecentMessageInChat(selectedChat);
-    document.getElementById(msgId.id).scrollIntoView();
-  };
 
   const onChange = (e) => {
     setMessageInput(e.target.value);

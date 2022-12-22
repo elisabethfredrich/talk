@@ -43,7 +43,7 @@ const HomeLoggedIn = () => {
     getCurrentUserChats();
     getGroupRecommendation();
     getProfileRecommendation();
-  }, []);
+  }, [currentUser]);
 
   const handleChange = (e) => {
     setInputField(e.target.value);
@@ -66,7 +66,7 @@ const HomeLoggedIn = () => {
       <div className="grid-container">
         <div className="grid-horizontal">
           <div className="img-home">
-            <img src={Picture} />
+            <img src={Picture} alt="language learning"/>
           </div>
 
           <Container blue>
