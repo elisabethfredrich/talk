@@ -4,7 +4,7 @@ import {
   getPointerObjectFromId,
   getObjectFromDBWithFirst,
 } from "./GeneralAPICalls";
-import { getUserObject } from "./UserAPICalls";
+import getCurrentUser, { getUserObject } from "./UserAPICalls";
 
 //############## CALL RELATED TO GROUP REGISTRATION ##############
 
@@ -222,6 +222,7 @@ export const getAllProfiles = async function () {
     const profileArray = [];
 
     for (const profile of profiles) {
+      if(profile.id !== getCurrentUser().id){
       profileArray.push({
         id: profile.id,
         name: profile.attributes.Name,
@@ -229,7 +230,7 @@ export const getAllProfiles = async function () {
         badge: profile.attributes.NativeLanguage,
         flag: profile.attributes.LearningLanguage,
       });
-    }
+    }}
     return profileArray;
   } catch (error) {
     console.log(`Could not get user profiles: ${error.message}`);

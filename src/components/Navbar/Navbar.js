@@ -87,7 +87,7 @@ function Navbar() {
             </button>
           </div>
           <div className="nav-profile-picture">
-            <button className="icon-button" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
+            <button className="icon-btn" onMouseEnter={showDropdown} onMouseLeave={hideDropdown}>
               <ProfilePicture
                 id="profile-pic"
                 small
